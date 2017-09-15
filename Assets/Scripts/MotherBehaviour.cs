@@ -13,6 +13,22 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     private Waypoint LastWaypoint;
     private Waypoint PreLastWaypoint;
     private NavMeshAgent NavAgent;
+    private Coroutine MoveCoroutine;
+
+    public void ReturnToNormal() {
+        MoveCoroutine = StartCoroutine(Move());
+    }
+
+    public void ChaseAnotherMother(MotherBehaviour m) {
+        StartCoroutine(ChaseMotherCoroutine(m));
+    }
+
+    public void OnFresherSpawnedInRange(Fresher f) {
+        if (MoveCoroutine != null)
+            StopCoroutine(MoveCoroutine);
+
+        NavAgent.SetDestination(f.transform.position);
+    }
 
     public void OnStandingInExplosionRange(Bomb b) {
         Destroy(gameObject);
@@ -23,7 +39,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     }
 
     void Start() {
-        StartCoroutine(Move());
+        MoveCoroutine = StartCoroutine(Move());
     }
 
     void Update() {
@@ -56,5 +72,16 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
 
             yield return null;
         }
+    }
+
+    private IEnumerator ChaseMotherCoroutine(MotherBehaviour m) {
+        float timer = 0.0f;
+        while (timer < 5.0f) {
+            NavAgent.SetDestination(m.transform.position);
+            timer += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        ReturnToNormal();
     }
 }

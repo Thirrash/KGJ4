@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: edb4750fba8b5f94d9bbf11c73d66236, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   BlastRadius: 10
-  TimeToExplosion: 10
+  TimeToExplosion: 4
+  InitialYPos: 100
 --- !u!120 &120720569598094440
 LineRenderer:
   m_ObjectHideFlags: 1

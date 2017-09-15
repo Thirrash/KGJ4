@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     public float Damage = 10.0f;
     public float BlastRadius = 10.0f;
     public float TimeToExplosion = 4.0f;
+    public float InitialYPos = 100.0f;
 
     private LineRenderer LineR;
     private ParticleSystem ParticleS;
@@ -41,6 +42,7 @@ public class Bomb : MonoBehaviour
             currAngle += incrValue;
         }
 
+        StartCoroutine(FallDown());
         StartCoroutine(Explode());
     }
 
@@ -50,6 +52,17 @@ public class Bomb : MonoBehaviour
 
     void Update() {
 
+    }
+
+    private IEnumerator FallDown() {
+        transform.position = new Vector3(transform.position.x, InitialYPos, transform.position.z);
+
+        float positionDecrement = InitialYPos / TimeToExplosion;
+        float timer = 0.0f;
+        while (timer < TimeToExplosion) {
+            transform.position -= new Vector3(0.0f, positionDecrement * Time.deltaTime, 0.0f);
+            yield return null;
+        }
     }
 
     private IEnumerator Explode() {
