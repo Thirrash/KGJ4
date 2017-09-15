@@ -39,6 +39,9 @@ public class WaypointHolder : MonoBehaviour
             }
         }
 
+        if (retWaypoint == null)
+            retWaypoint = GetLinkedWaypointOther(CurrentWaypoint, null);
+
         return retWaypoint;
     }
 
