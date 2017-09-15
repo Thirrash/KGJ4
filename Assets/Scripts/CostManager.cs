@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CostManager : MonoBehaviour {
-
+public class CostManager : MonoBehaviour
+{
     public static CostManager Instance;
-    public float totalCost { get; private set; }
+    public float TotalCost;
 
-	void Awake () {
-        totalCost = 0;
+    void Awake() {
+        TotalCost = 0;
         Instance = this;
-	}
-	
-	void Update () {
-		
-	}
+    }
 
-    public void AddCost(float cost)
-    {
-        if (cost > 0)
-        {
-            totalCost += cost;
+    void Update() {
+
+    }
+
+    public void AddCost(float cost) {
+        if (cost > 0) {
+            TotalCost += cost;
         }
     }
 }

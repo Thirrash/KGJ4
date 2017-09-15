@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 580597254}
   - component: {fileID: 580597253}
   - component: {fileID: 580597255}
+  - component: {fileID: 580597256}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -567,6 +568,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllWaypoints: []
+--- !u!114 &580597256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580597252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad15ca2cb7b9134aaae9364239c5160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalCost: 0
 --- !u!1 &808981382
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,9 +816,10 @@ GameObject:
   - component: {fileID: 1326202747}
   - component: {fileID: 1326202746}
   - component: {fileID: 1326202745}
-  m_Layer: 0
+  - component: {fileID: 1326202749}
+  m_Layer: 11
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -874,6 +888,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326202749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326202744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3317551c1e152d42a6b843e959e99e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 5
 --- !u!114 &1354681510 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114224052238736804, guid: 11becc6d3f9fb384fa49326c5d932177,
@@ -891,9 +917,9 @@ GameObject:
   - component: {fileID: 1526886058}
   - component: {fileID: 1526886057}
   - component: {fileID: 1526886056}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -973,9 +999,9 @@ GameObject:
   - component: {fileID: 1718141371}
   - component: {fileID: 1718141370}
   - component: {fileID: 1718141369}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

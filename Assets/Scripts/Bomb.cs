@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public static float BlastRadius = 30.0f;
+    public float Damage = 10.0f;
+    public float BlastRadius = 30.0f;
     public float TimeToExplosion = 4.0f;
 
     void Start() {
