@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 96ece35c6fd8a6944a8e4b1bbd6da627
 folderAsset: yes
 timeCreated: 1505544687
+=======
+guid: b241681b7da4b8747be899af9a95948a
+folderAsset: yes
+timeCreated: 1505542860
+>>>>>>> origin/PigeonHoledBranch
 licenseType: Free
 DefaultImporter:
   userData: 
