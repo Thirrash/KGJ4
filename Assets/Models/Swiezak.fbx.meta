@@ -1,24 +1,15 @@
 fileFormatVersion: 2
-guid: 82fd3188b8919f147b23a8422a44271d
-timeCreated: 1505586102
+guid: 44a79a46d3936d245bc8ac3e68e8ec95
+timeCreated: 1505596428
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Eyes
-    100002: Fresher
-    100004: Point
-    100006: //RootNode
-    400000: Eyes
-    400002: Fresher
-    400004: Point
-    400006: //RootNode
-    2300000: Eyes
-    2300002: Fresher
-    3300000: Eyes
-    3300002: Fresher
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Fresher
-    4300002: Eyes
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,7 +36,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -8,7 +8,7 @@ public class TimerManager : MonoBehaviour {
     public Text ResultText;
 
     private Text TimerText;
-    private float timeLeft = 185.0f;
+    private float timeLeft = 15.0f;
     private bool bIsFinished = false;
 
     public float minScore = 4.76f;
