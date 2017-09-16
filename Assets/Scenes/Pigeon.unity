@@ -2383,6 +2383,7 @@ GameObject:
   - component: {fileID: 233054367}
   - component: {fileID: 233054369}
   - component: {fileID: 233054368}
+  - component: {fileID: 233054370}
   m_Layer: 11
   m_Name: Podstawa
   m_TagString: Untagged
@@ -2445,6 +2446,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 233054366}
   m_Mesh: {fileID: 4300000, guid: 96d70c3eacd06d14888f9aeae42d9edb, type: 3}
+--- !u!114 &233054370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233054366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3317551c1e152d42a6b843e959e99e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0.05
 --- !u!1001 &236751824
 Prefab:
   m_ObjectHideFlags: 0
@@ -13007,7 +13020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3317551c1e152d42a6b843e959e99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 0.64
 --- !u!1001 &1565907738
 Prefab:
   m_ObjectHideFlags: 0
