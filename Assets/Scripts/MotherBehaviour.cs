@@ -82,7 +82,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
         NavAgent.SetDestination(CurrentWaypoint.transform.position);
         while (true) {
             if (Vector3.Distance(transform.position, GetCurrentWaypoint().transform.position) < DistanceToWaypoint) {
-                Waypoint wp = WaypointHolder.Instance.GetLinkedWaypointFarthestFromBomb(CurrentWaypoint);
+                Waypoint wp = WaypointHolder.Instance.GetLinkedWaypointNotOnRoad(CurrentWaypoint);
                 LastWaypoint = CurrentWaypoint;
                 if (wp != PreLastWaypoint) {
                     SetCurrentWaypoint(wp);

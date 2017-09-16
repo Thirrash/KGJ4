@@ -83,6 +83,27 @@ public class WaypointHolder : MonoBehaviour
         return retWaypoint;
     }
 
+    public Waypoint GetLinkedWaypointNotOnRoad(Waypoint CurrentWaypoint) {
+        Waypoint retWaypoint = null;
+        List<Waypoint> list = CurrentWaypoint.Links;
+        List<Bomb> bombsList = BombHolder.Instance.AtomicBombs;
+
+        float maximumDistance = 0.0f;
+        foreach (Waypoint w in list) {
+            float waypointMaxDistance = 0.0f;
+
+            if (waypointMaxDistance > maximumDistance && !w.bIsOnRoad) {
+                maximumDistance = waypointMaxDistance;
+                retWaypoint = w;
+            }
+        }
+
+        if (retWaypoint == null)
+            retWaypoint = GetLinkedWaypointOther(CurrentWaypoint, null);
+
+        return retWaypoint;
+    }
+
     public Waypoint GetLinkedWaypointClosestFromBomb(Waypoint CurrentWaypoint) {
         Waypoint retWaypoint = null;
         List<Waypoint> list = CurrentWaypoint.Links;
