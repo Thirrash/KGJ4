@@ -33,7 +33,9 @@ public class Building : MonoBehaviour, IDestroyable
     }
 
     void Start() {
-
+        GameObject destroyed = GetComponentInChildren<Transform>().gameObject;
+        if (destroyed != gameObject)
+            destroyed.SetActive(false);
     }
 
     void Update() {
