@@ -25,9 +25,12 @@ public class WaypointHolder : MonoBehaviour
     public Waypoint GetLinkedWaypointOtherRoad(Waypoint CurrentWaypoint, Waypoint WaypointWeDontWant) {
         List<Waypoint> list = CurrentWaypoint.Links;
         Waypoint w;
-        while (w = list[Random.Range(0, list.Count)])
+        for (int i=0; i<list.Count; ++i)
+        {
+            w = list[Random.Range(0, list.Count)];
             if (w != WaypointWeDontWant && w.bIsOnRoad)
                 return w;
+        }
 
         return null;
     }
