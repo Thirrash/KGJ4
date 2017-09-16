@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class DriverBehaviour : MonoBehaviour, IDestroyable
 {
-    public static float DistanceToWaypoint = 1.5f;
+    public static float DistanceToWaypoint = 4.0f;
     public float MovementSpeed = 1.0f;
     public Waypoint CurrentWaypoint;
 
@@ -61,6 +61,7 @@ public class DriverBehaviour : MonoBehaviour, IDestroyable
 
     private IEnumerator Move() {
         NavAgent.SetDestination(CurrentWaypoint.transform.position);
+        Debug.Log(NavAgent.destination.ToString());
         while (true) {
             if (Vector3.Distance(transform.position, GetCurrentWaypoint().transform.position) < DistanceToWaypoint) {
                 Waypoint wp = WaypointHolder.Instance.GetLinkedWaypointFarthestFromBombRoad(CurrentWaypoint);
