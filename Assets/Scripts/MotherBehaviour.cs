@@ -83,7 +83,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
         while (true) {
             if (Vector3.Distance(transform.position, GetCurrentWaypoint().transform.position) < DistanceToWaypoint) {
                 Waypoint wp;
-                if (LastWaypoint.bIsOnRoad)
+                if (LastWaypoint && LastWaypoint.bIsOnRoad)
                     wp = WaypointHolder.Instance.GetLinkedWaypointNotOnRoad(CurrentWaypoint);
                 else
                     wp = WaypointHolder.Instance.GetLinkedWaypointFarthestFromBomb(CurrentWaypoint);

@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllWaypoints: []
+  MotherGo: {fileID: 1538264399517202, guid: 38977b78ebef94c41a784a7a24819c2c, type: 2}
 --- !u!114 &580597256
 MonoBehaviour:
   m_ObjectHideFlags: 0
