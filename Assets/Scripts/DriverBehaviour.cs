@@ -72,4 +72,10 @@ public class DriverBehaviour : MonoBehaviour, IDestroyable
             yield return null;
         }
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.layer == Statics.MotherLayer) {
+            collision.gameObject.GetComponent<MotherBehaviour>().OnDriverDeath();
+        }
+    }
 }

@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class MotherBehaviour : MonoBehaviour, IDestroyable
 {
+    public static float BombDeathCost = 0.01f;
+    public static float DriverDeathCost = 0.005f;
+
     public static float DistanceToWaypoint = 4f;
     public float MovementSpeed = 1.0f;
     public Waypoint CurrentWaypoint;
@@ -14,6 +17,11 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     private Waypoint PreLastWaypoint;
     private NavMeshAgent NavAgent;
     private Coroutine MoveCoroutine;
+
+    public void OnDriverDeath() {
+        CostManager.Instance.AddCost(DriverDeathCost);
+        Destroy(gameObject);
+    }
 
     public void ReturnToNormal() {
         MoveCoroutine = StartCoroutine(Move());
@@ -31,6 +39,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     }
 
     public void OnStandingInExplosionRange(Bomb b) {
+        CostManager.Instance.AddCost(BombDeathCost);
         Destroy(gameObject);
     }
 
