@@ -14,9 +14,7 @@ public class Building : MonoBehaviour, IDestroyable
         if (bIsDestroyed) { return; }
 
         if (cost > 0) {
-            float impactDistance = Vector3.Magnitude(b.transform.position - transform.position);
-            float loss = b.Damage * (b.BlastRadius - impactDistance) / b.BlastRadius;
-            loss = loss > cost ? cost : loss;
+            float loss = b.Damage > cost ? cost : b.Damage;
             cost -= loss;
 
             CostManager.Instance.AddCost(loss);
@@ -29,7 +27,9 @@ public class Building : MonoBehaviour, IDestroyable
     }
 
     void DestroyBuilding() {
-
+        GameObject destroyed = GetComponentInChildren<Transform>().gameObject;
+        destroyed.SetActive(true);
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     void Start() {
