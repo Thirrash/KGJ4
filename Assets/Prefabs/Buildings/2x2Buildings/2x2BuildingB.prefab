@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4862722478381510}
   - component: {fileID: 33717686540130042}
-  - component: {fileID: 65938156133678980}
   - component: {fileID: 23419736715099960}
   - component: {fileID: 114885256060030258}
+  - component: {fileID: 65938156133678980}
+  - component: {fileID: 65844148682371492}
   m_Layer: 11
   m_Name: 2x2BuildingB
   m_TagString: Building
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1142694654021170}
   m_Mesh: {fileID: 4300000, guid: aa11f9aaaa584ca4d85fba32753514f0, type: 3}
+--- !u!65 &65844148682371492
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1142694654021170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.023, y: 0.04, z: 0.0065}
+  m_Center: {x: 0.01, y: 0, z: 0.026}
 --- !u!65 &65938156133678980
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -93,7 +106,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.041, y: 0.041, z: 0.045}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114885256060030258
 MonoBehaviour:
