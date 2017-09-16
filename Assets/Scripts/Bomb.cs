@@ -13,6 +13,8 @@ public class Bomb : MonoBehaviour
     private LineRenderer LineR;
     private ParticleSystem ParticleS;
 
+    private const float explosionDuration = 9.5f;
+
     private void Awake() {
         LineR = GetComponent<LineRenderer>();
         ParticleS = GetComponent<ParticleSystem>();
@@ -84,8 +86,7 @@ public class Bomb : MonoBehaviour
                 aaSource.PlayOneShot(aaSource.clip);
                 GetComponent<LineRenderer>().enabled = false;
 
-                Debug.Log(paSystem.main.duration + paSystem.main.startLifetimeMultiplier + aaSource.clip.length);
-                yield return new WaitForSeconds(paSystem.main.duration + paSystem.main.startLifetimeMultiplier + aaSource.clip.length * 0.7f);
+                yield return new WaitForSeconds(explosionDuration);
                 Destroy(gameObject);
             }
         }
@@ -103,8 +104,7 @@ public class Bomb : MonoBehaviour
         aSource.PlayOneShot(aSource.clip);
         GetComponent<LineRenderer>().enabled = false;
 
-        Debug.Log(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length);
-        yield return new WaitForSeconds(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length * 0.7f);
+        yield return new WaitForSeconds(explosionDuration);
         Destroy(gameObject);
     }
 }
