@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MotherBehaviour : MonoBehaviour, IDestroyable
+public class ONRBehaviour : MonoBehaviour, IDestroyable
 {
     public static float DistanceToWaypoint = 1.5f;
     public float MovementSpeed = 1.0f;
@@ -15,23 +14,8 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     private NavMeshAgent NavAgent;
     private Coroutine MoveCoroutine;
 
-    public void ReturnToNormal() {
-        MoveCoroutine = StartCoroutine(Move());
-    }
-
-    public void ChaseAnotherMother(MotherBehaviour m) {
-        StartCoroutine(ChaseMotherCoroutine(m));
-    }
-
-    public void OnFresherSpawnedInRange(Fresher f) {
-        if (MoveCoroutine != null)
-            StopCoroutine(MoveCoroutine);
-
-        NavAgent.SetDestination(f.transform.position);
-    }
-
     public void OnStandingInExplosionRange(Bomb b) {
-        Destroy(gameObject);
+        
     }
 
     private void Awake() {
@@ -57,13 +41,10 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
 
     private IEnumerator CheckForHomeless() {
         while (true) {
-            if (Physics.Raycast(transform.position, CurrentWaypoint.transform.position - transform.position, 5.0f, 1 << Statics.HomelessLayer, QueryTriggerInteraction.Collide)) {
-                Waypoint newWp = WaypointHolder.Instance.GetLinkedWaypointOther(LastWaypoint, CurrentWaypoint);
-                NavAgent.SetDestination(newWp.transform.position);
-                Waypoint tmp = CurrentWaypoint;
-                SetCurrentWaypoint(newWp);
-                PreLastWaypoint = LastWaypoint;
-                LastWaypoint = tmp;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, CurrentWaypoint.transform.position - transform.position, out hit, 1.5f, 1 << Statics.HomelessLayer, QueryTriggerInteraction.Collide)) {
+                yield return new WaitForSeconds(1.5f);
+                Destroy(hit.collider.gameObject);
             }
             yield return new WaitForSeconds(0.1f);
         }
@@ -87,16 +68,5 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
 
             yield return null;
         }
-    }
-
-    private IEnumerator ChaseMotherCoroutine(MotherBehaviour m) {
-        float timer = 0.0f;
-        while (timer < 5.0f) {
-            NavAgent.SetDestination(m.transform.position);
-            timer += 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-
-        ReturnToNormal();
     }
 }

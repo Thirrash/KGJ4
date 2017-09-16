@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance;
+    public event Action<int> OnAvailabilityChanged;
+
+    public Dictionary<int, float> WeaponCooldowns = new Dictionary<int, float>();
+    public Dictionary<int, bool> WeaponAvailability = new Dictionary<int, bool>();
     public Dictionary<int, string> WeaponResources = new Dictionary<int, string>();
     public Dictionary<int, string> WeaponShadows = new Dictionary<int, string>();
     public int CurrentWeapon = 1;
+
+    public bool bIsToRotate = false;
 
     public bool bIsOnGlobalCooldown = false;
     public float GlobalCooldown = 0.5f;
@@ -20,26 +27,47 @@ public class SpawnManager : MonoBehaviour
         if (CurrentSpawnPoint == Vector3.zero)
             return;
 
-        GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(WeaponResources[CurrentWeapon]), CurrentSpawnPoint, Quaternion.identity);
+        if (!WeaponAvailability[CurrentWeapon] || bIsOnGlobalCooldown)
+            return;
+
+        GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(WeaponResources[CurrentWeapon]), CurrentSpawnPoint, Quaternion.Euler(new Vector3(0.0f, (bIsToRotate) ? 90.0f : 0.0f, 0.0f)));
 
         bIsOnGlobalCooldown = true;
         if (GlobalCooldownCoroutine != null)
             StopCoroutine(GlobalCooldownCoroutine);
 
         GlobalCooldownCoroutine = StartCoroutine(ActivateGlobalCooldown());
+        StartCoroutine(TickWeaponCooldown(CurrentWeapon));
+        OnAvailabilityChanged(CurrentWeapon);
     }
 
     void Start() {
+        Instance = this;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
         WeaponResources.Add(1, "Weapons/AtomicBomb");
+        WeaponResources.Add(2, "Weapons/AirRaid");
         WeaponResources.Add(3, "Weapons/Fresher");
+        WeaponResources.Add(4, "Weapons/Homeless");
 
         WeaponShadows.Add(1, "Shadows/AtomicBomb");
+        WeaponShadows.Add(2, "Shadows/AirRaid");
         WeaponShadows.Add(3, "Shadows/Fresher");
+        WeaponShadows.Add(4, "Shadows/Homeless");
+
+        WeaponCooldowns.Add(1, 3.0f);
+        WeaponCooldowns.Add(2, 2.0f);
+        WeaponCooldowns.Add(3, 6.0f);
+        WeaponCooldowns.Add(4, 5.0f);
+
+        WeaponAvailability.Add(1, true);
+        WeaponAvailability.Add(2, true);
+        WeaponAvailability.Add(3, true);
+        WeaponAvailability.Add(4, true);
 
         ChangeCurrentShadow();
+        OnAvailabilityChanged += (x) => { };
     }
 
     void Update() {
@@ -48,6 +76,10 @@ public class SpawnManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) {
             SpawnWeapon();
+        }
+
+        if (Input.GetMouseButtonDown(1)) {
+            bIsToRotate = !bIsToRotate;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -59,6 +91,9 @@ public class SpawnManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
             CurrentWeapon = 3;
             ChangeCurrentShadow();
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            CurrentWeapon = 4;
+            ChangeCurrentShadow();
         }
 
         CurrentSpawnPoint = GetSpawnPosition();
@@ -67,11 +102,29 @@ public class SpawnManager : MonoBehaviour
             CurrentShadow.transform.position = CurrentSpawnPoint;
         else
             CurrentShadow.transform.position = new Vector3(0.0f, -50.0f, 0.0f);
+
+        CurrentShadow.transform.rotation = Quaternion.Euler(new Vector3(0.0f, (bIsToRotate) ? 90.0f : 0.0f, 0.0f));
+
+        if (!WeaponAvailability[CurrentWeapon]) {
+            MeshRenderer[] renderers = CurrentShadow.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer m in renderers)
+                m.enabled = false;
+        } else {
+            MeshRenderer[] renderers = CurrentShadow.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer m in renderers)
+                m.enabled = true;
+        }
     }
 
     private IEnumerator ActivateGlobalCooldown() {
         yield return new WaitForSeconds(GlobalCooldown);
         FinishGlobalCooldown();
+    }
+
+    private IEnumerator TickWeaponCooldown(int WeaponNr) {
+        WeaponAvailability[WeaponNr] = false;
+        yield return new WaitForSeconds(WeaponCooldowns[WeaponNr]);
+        WeaponAvailability[WeaponNr] = true;
     }
 
     private void FinishGlobalCooldown() {
