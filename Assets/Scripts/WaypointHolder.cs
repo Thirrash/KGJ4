@@ -6,6 +6,7 @@ public class WaypointHolder : MonoBehaviour
 {
     public static WaypointHolder Instance;
     public List<Waypoint> AllWaypoints = new List<Waypoint>();
+    public GameObject MotherGo;
 
     public void AddWaypoint(Waypoint W) {
         AllWaypoints.Add(W);
@@ -109,5 +110,13 @@ public class WaypointHolder : MonoBehaviour
 
     void Start() {
         Instance = this;
+        Invoke("SpawnSpam", 3.0f);
+    }
+
+    private void SpawnSpam() {
+        foreach (Waypoint w in AllWaypoints) {
+            GameObject go = GameObject.Instantiate<GameObject>(MotherGo, w.transform.position, Quaternion.identity);
+            go.GetComponent<MotherBehaviour>().CurrentWaypoint = w;
+        }
     }
 }
