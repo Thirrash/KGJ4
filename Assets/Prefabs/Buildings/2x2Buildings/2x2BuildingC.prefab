@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4785177639553576}
   - component: {fileID: 33056302484777838}
-  - component: {fileID: 65165147179653072}
   - component: {fileID: 23279252794148282}
   - component: {fileID: 114788340801962408}
+  - component: {fileID: 65165147179653072}
+  - component: {fileID: 65679151586747970}
   m_Layer: 11
   m_Name: 2x2BuildingC
   m_TagString: Building
@@ -93,8 +94,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.041, y: 0.041, z: 0.045}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65679151586747970
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393975225608758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.023, y: 0.04, z: 0.0065}
+  m_Center: {x: 0.01, y: 0, z: 0.026}
 --- !u!114 &114788340801962408
 MonoBehaviour:
   m_ObjectHideFlags: 1

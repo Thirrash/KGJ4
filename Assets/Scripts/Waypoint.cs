@@ -6,6 +6,7 @@ using UnityEditor;
 public class Waypoint : MonoBehaviour
 {
     public List<Waypoint> Links = new List<Waypoint>();
+    public bool bIsOnRoad = false;
 
     void Start() {
         WaypointHolder.Instance.AddWaypoint(this);
