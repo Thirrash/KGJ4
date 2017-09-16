@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsAirRaid: 0
-  Damage: 10
+  Damage: 0.15
   BlastRadius: 12
   TimeToExplosion: 4
   InitialYPos: 100

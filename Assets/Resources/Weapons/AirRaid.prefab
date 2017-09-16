@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsAirRaid: 1
-  Damage: 10
+  Damage: 0.06
   BlastRadius: 8
   TimeToExplosion: 2
   InitialYPos: 100
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsAirRaid: 1
-  Damage: 10
+  Damage: 0.06
   BlastRadius: 8
   TimeToExplosion: 2
   InitialYPos: 100
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsAirRaid: 1
-  Damage: 10
+  Damage: 0.06
   BlastRadius: 8
   TimeToExplosion: 2
   InitialYPos: 100
