@@ -10,7 +10,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     public static float DriverDeathCost = 0.005f;
     public static float ONRDeathCost = 0.008f;
 
-    public static float DistanceToWaypoint = 4f;
+    public static float DistanceToWaypoint = 6.0f;
     public float MovementSpeed = 1.0f;
     public Waypoint CurrentWaypoint;
     public bool bIsShielded = false;
