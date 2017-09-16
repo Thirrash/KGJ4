@@ -547,7 +547,7 @@ MonoBehaviour:
   Links:
   - {fileID: 1875793967}
   - {fileID: 1100505865}
-  bIsOnRoad: 0
+  bIsOnRoad: 1
 --- !u!23 &560721274
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 580597255}
   - component: {fileID: 580597256}
   - component: {fileID: 580597257}
+  - component: {fileID: 580597258}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -684,6 +685,20 @@ MonoBehaviour:
   bIsToRotate: 0
   bIsOnGlobalCooldown: 0
   GlobalCooldown: 0.5
+--- !u!114 &580597258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580597252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ca26c968643f74e9d113d922f5a4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DriverList: []
+  AmericanPrefab: {fileID: 1046041139228418, guid: 6721fc8542ee2f94c9ee85a0166a57db,
+    type: 2}
 --- !u!1 &699112976
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +1005,7 @@ MonoBehaviour:
   - {fileID: 371868382}
   - {fileID: 340154459}
   - {fileID: 1100505865}
-  bIsOnRoad: 0
+  bIsOnRoad: 1
 --- !u!23 &860504180
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1179,6 +1194,11 @@ Prefab:
       propertyPath: CurrentWaypoint
       value: 
       objectReference: {fileID: 1753021132}
+    - target: {fileID: 195327694512318340, guid: d058215b143e05046a18c3114b6c3f0e,
+        type: 2}
+      propertyPath: m_Acceleration
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d058215b143e05046a18c3114b6c3f0e, type: 2}
   m_IsPrefabParent: 0
@@ -1609,7 +1629,7 @@ MonoBehaviour:
   - {fileID: 164916839}
   - {fileID: 860504179}
   - {fileID: 560721273}
-  bIsOnRoad: 0
+  bIsOnRoad: 1
 --- !u!23 &1875793968
 MeshRenderer:
   m_ObjectHideFlags: 0

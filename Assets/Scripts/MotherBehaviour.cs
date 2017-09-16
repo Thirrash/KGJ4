@@ -8,15 +8,22 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
 {
     public static float BombDeathCost = 0.01f;
     public static float DriverDeathCost = 0.005f;
+    public static float ONRDeathCost = 0.008f;
 
     public static float DistanceToWaypoint = 4f;
     public float MovementSpeed = 1.0f;
     public Waypoint CurrentWaypoint;
+    public bool bIsShielded = false;
 
     private Waypoint LastWaypoint;
     private Waypoint PreLastWaypoint;
     private NavMeshAgent NavAgent;
     private Coroutine MoveCoroutine;
+
+    public void OnONRDeath() {
+        CostManager.Instance.AddCost(ONRDeathCost);
+        Destroy(gameObject);
+    }
 
     public void OnDriverDeath() {
         CostManager.Instance.AddCost(DriverDeathCost);
@@ -39,12 +46,19 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     }
 
     public void OnStandingInExplosionRange(Bomb b) {
+        if (bIsShielded)
+            return;
+
         CostManager.Instance.AddCost(BombDeathCost);
         Destroy(gameObject);
     }
 
     private void Awake() {
         NavAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnDestroy() {
+        StopAllCoroutines();
     }
 
     void Start() {

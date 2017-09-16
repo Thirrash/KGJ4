@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,8 +15,10 @@ public class ONRBehaviour : MonoBehaviour, IDestroyable
     private NavMeshAgent NavAgent;
     private Coroutine MoveCoroutine;
 
+    private bool bIsFighting = false;
+
     public void OnStandingInExplosionRange(Bomb b) {
-        
+        Destroy(gameObject);
     }
 
     private void Awake() {
@@ -29,6 +32,24 @@ public class ONRBehaviour : MonoBehaviour, IDestroyable
 
     void Update() {
 
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.layer == Statics.MotherLayer) {
+            if (!bIsFighting)
+                StartCoroutine(FightMother(collision.gameObject.GetComponent<MotherBehaviour>(), 1.5f, (b) => { bIsFighting = b; }));
+        }
+    }
+
+    private IEnumerator FightMother(MotherBehaviour mb, float Time, Action<bool> bIsFIghtingWrapper) {
+        bIsFIghtingWrapper(true);
+        float prevSpeed = NavAgent.speed;
+        NavAgent.speed = 0.0f;
+        mb.GetComponent<NavMeshAgent>().speed = 0.0f;
+        yield return new WaitForSeconds(Time);
+        mb.OnONRDeath();
+        NavAgent.speed = prevSpeed;
+        bIsFIghtingWrapper(false);
     }
 
     private Waypoint GetCurrentWaypoint() {
@@ -55,7 +76,7 @@ public class ONRBehaviour : MonoBehaviour, IDestroyable
         while (true) {
             if (Vector3.Distance(transform.position, GetCurrentWaypoint().transform.position) < DistanceToWaypoint) {
                 Waypoint wp;
-                if (LastWaypoint.bIsOnRoad)
+                if (LastWaypoint && LastWaypoint.bIsOnRoad)
                     wp = WaypointHolder.Instance.GetLinkedWaypointNotOnRoad(CurrentWaypoint);
                 else
                     wp = WaypointHolder.Instance.GetLinkedWaypointFarthestFromBomb(CurrentWaypoint);

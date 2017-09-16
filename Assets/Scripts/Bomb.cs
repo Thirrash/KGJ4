@@ -103,7 +103,6 @@ public class Bomb : MonoBehaviour
         aSource.PlayOneShot(aSource.clip);
         GetComponent<LineRenderer>().enabled = false;
 
-        Debug.Log(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length);
         yield return new WaitForSeconds(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length * 0.7f);
         Destroy(gameObject);
     }
