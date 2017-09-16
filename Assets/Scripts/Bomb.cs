@@ -49,10 +49,6 @@ public class Bomb : MonoBehaviour
         StartCoroutine(Explode());
     }
 
-    private void OnDestroy() {
-        BombHolder.Instance.RemoveAtomicBomb(this);
-    }
-
     void Update() {
 
     }
@@ -86,7 +82,9 @@ public class Bomb : MonoBehaviour
                 aaSource.PlayOneShot(aaSource.clip);
                 GetComponent<LineRenderer>().enabled = false;
 
-                yield return new WaitForSeconds(explosionDuration);
+                yield return new WaitForSeconds(explosionDuration / 2.0f);
+                BombHolder.Instance.RemoveAtomicBomb(this);
+                yield return new WaitForSeconds(explosionDuration / 2.0f);
                 Destroy(gameObject);
             }
         }
@@ -104,7 +102,9 @@ public class Bomb : MonoBehaviour
         aSource.PlayOneShot(aSource.clip);
         GetComponent<LineRenderer>().enabled = false;
 
-        yield return new WaitForSeconds(explosionDuration);
+        yield return new WaitForSeconds(explosionDuration/2.0f);
+        BombHolder.Instance.RemoveAtomicBomb(this);
+        yield return new WaitForSeconds(explosionDuration / 2.0f);
         Destroy(gameObject);
     }
 }
