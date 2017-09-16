@@ -72,6 +72,16 @@ public class Bomb : MonoBehaviour
         foreach (Collider c in hitEntities) {
             if (c.gameObject.layer == Statics.ONRLayer) {
                 c.gameObject.GetComponent<IDestroyable>().OnStandingInExplosionRange(this);
+
+                GetComponent<MeshRenderer>().enabled = false;
+                ParticleSystem paSystem = GetComponent<ParticleSystem>();
+                paSystem.Play();
+                AudioSource aaSource = GetComponent<AudioSource>();
+                aaSource.PlayOneShot(aaSource.clip);
+                GetComponent<LineRenderer>().enabled = false;
+
+                Debug.Log(paSystem.main.duration + paSystem.main.startLifetimeMultiplier + aaSource.clip.length);
+                yield return new WaitForSeconds(paSystem.main.duration + paSystem.main.startLifetimeMultiplier + aaSource.clip.length * 0.7f);
                 Destroy(gameObject);
             }
         }
@@ -82,9 +92,15 @@ public class Bomb : MonoBehaviour
                 des.OnStandingInExplosionRange(this);
         }
 
+        GetComponent<MeshRenderer>().enabled = false;
         ParticleSystem pSystem = GetComponent<ParticleSystem>();
         pSystem.Play();
-        yield return new WaitForSeconds(pSystem.duration + pSystem.startLifetime);
+        AudioSource aSource = GetComponent<AudioSource>();
+        aSource.PlayOneShot(aSource.clip);
+        GetComponent<LineRenderer>().enabled = false;
+
+        Debug.Log(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length);
+        yield return new WaitForSeconds(pSystem.main.duration + pSystem.main.startLifetimeMultiplier + aSource.clip.length * 0.7f);
         Destroy(gameObject);
     }
 }
