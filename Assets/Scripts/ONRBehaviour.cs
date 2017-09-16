@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ONRBehaviour : MonoBehaviour, IDestroyable
 {
-    public static float DistanceToWaypoint = 1.5f;
+    public static float DistanceToWaypoint = 4f;
     public float MovementSpeed = 1.0f;
     public Waypoint CurrentWaypoint;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fresher : MonoBehaviour
 {
-    public float PullRadius = 30.0f;
+    public float PullRadius = 60.0f;
     public float LiveTime = 6.0f;
     public Waypoint ClosestWaypoint;
 

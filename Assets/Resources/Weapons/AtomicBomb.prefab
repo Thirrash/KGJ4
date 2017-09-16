@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f23491651cc81c43a6e62c6dbcc99e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bIsAirRaid: 0
   Damage: 10
-  BlastRadius: 10
+  BlastRadius: 12
   TimeToExplosion: 4
   InitialYPos: 100
 --- !u!120 &120720569598094440

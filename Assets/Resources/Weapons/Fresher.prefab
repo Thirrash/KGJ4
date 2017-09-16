@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f316a526960d9545bc93ec67ae974d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PullRadius: 10
+  PullRadius: 40
   LiveTime: 6
   ClosestWaypoint: {fileID: 0}
 --- !u!135 &135642952357849812
