@@ -45,6 +45,31 @@ public class WaypointHolder : MonoBehaviour
         return retWaypoint;
     }
 
+    public Waypoint GetLinkedWaypointClosestFromBomb(Waypoint CurrentWaypoint) {
+        Waypoint retWaypoint = null;
+        List<Waypoint> list = CurrentWaypoint.Links;
+        List<Bomb> bombsList = BombHolder.Instance.AtomicBombs;
+
+        float minimumDistance = 0.0f;
+        foreach (Waypoint w in list) {
+            float waypointMinDistance = 0.0f;
+            foreach (Bomb b in bombsList) {
+                if (Vector3.Distance(w.transform.position, b.transform.position) < waypointMinDistance)
+                    waypointMinDistance = Vector3.Distance(w.transform.position, b.transform.position);
+            }
+
+            if (waypointMinDistance < minimumDistance) {
+                minimumDistance = waypointMinDistance;
+                retWaypoint = w;
+            }
+        }
+
+        if (retWaypoint == null)
+            retWaypoint = GetLinkedWaypointOther(CurrentWaypoint, null);
+
+        return retWaypoint;
+    }
+
     void Start() {
         Instance = this;
     }

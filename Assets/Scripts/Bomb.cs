@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public bool bIsAirRaid = false;
     public float Damage = 10.0f;
     public float BlastRadius = 10.0f;
     public float TimeToExplosion = 4.0f;
@@ -68,6 +69,13 @@ public class Bomb : MonoBehaviour
     private IEnumerator Explode() {
         yield return new WaitForSeconds(TimeToExplosion);
         Collider[] hitEntities = Physics.OverlapSphere(new Vector3(transform.position.x, 0.0f, transform.position.z), BlastRadius, Statics.DestroyableLayers);
+        foreach (Collider c in hitEntities) {
+            if (c.gameObject.layer == Statics.ONRLayer) {
+                c.gameObject.GetComponent<IDestroyable>().OnStandingInExplosionRange(this);
+                Destroy(gameObject);
+            }
+        }
+
         foreach (Collider c in hitEntities) {
             IDestroyable des = c.gameObject.GetComponent<IDestroyable>();
             if (des != null)
