@@ -27,15 +27,22 @@ public class Building : MonoBehaviour, IDestroyable
     }
 
     void DestroyBuilding() {
-        GameObject destroyed = GetComponentInChildren<Transform>().gameObject;
-        destroyed.SetActive(true);
+        Transform[] destroyed = GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in destroyed) {
+            if (t.gameObject != gameObject) {
+                t.gameObject.SetActive(true);
+                Debug.Log(t.gameObject.name);
+            }
+        }
+
         GetComponent<MeshRenderer>().enabled = false;
     }
 
     void Start() {
-        GameObject destroyed = GetComponentInChildren<Transform>().gameObject;
-        if (destroyed != gameObject)
-            destroyed.SetActive(false);
+        Transform[] destroyed = GetComponentsInChildren<Transform>();
+        foreach (Transform t in destroyed)
+            if (t.gameObject != gameObject)
+                t.gameObject.SetActive(false);
     }
 
     void Update() {

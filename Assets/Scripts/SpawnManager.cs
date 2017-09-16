@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
     public event Action<int> OnAvailabilityChanged;
+    public int NoMothers;
 
     public Dictionary<int, float> WeaponCooldowns = new Dictionary<int, float>();
     public Dictionary<int, bool> WeaponAvailability = new Dictionary<int, bool>();
@@ -22,6 +23,10 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 CurrentSpawnPoint = Vector3.zero;
     private GameObject CurrentShadow;
+
+    public void RemoveMother() {
+        WaypointHolder.Instance.SpawnMother();
+    }
 
     public void SpawnWeapon() {
         if (CurrentSpawnPoint == Vector3.zero)

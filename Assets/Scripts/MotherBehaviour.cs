@@ -58,6 +58,7 @@ public class MotherBehaviour : MonoBehaviour, IDestroyable
     }
 
     private void OnDestroy() {
+        SpawnManager.Instance.RemoveMother();
         StopAllCoroutines();
     }
 

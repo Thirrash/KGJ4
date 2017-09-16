@@ -8,6 +8,12 @@ public class WaypointHolder : MonoBehaviour
     public List<Waypoint> AllWaypoints = new List<Waypoint>();
     public GameObject MotherGo;
 
+    public void SpawnMother() {
+        int i = Random.Range(0, AllWaypoints.Count);
+        GameObject go = GameObject.Instantiate<GameObject>(MotherGo, AllWaypoints[i].transform.position, Quaternion.identity);
+        go.GetComponent<MotherBehaviour>().CurrentWaypoint = AllWaypoints[i];
+    }
+
     public void AddWaypoint(Waypoint W) {
         AllWaypoints.Add(W);
     }
@@ -136,10 +142,15 @@ public class WaypointHolder : MonoBehaviour
         Invoke("SpawnSpam", 3.0f);
     }
 
-    private void SpawnSpam() {
-        foreach (Waypoint w in AllWaypoints) {
-            GameObject go = GameObject.Instantiate<GameObject>(MotherGo, w.transform.position, Quaternion.identity);
-            go.GetComponent<MotherBehaviour>().CurrentWaypoint = w;
+    public void SpawnSpam() {
+        AllWaypoints.Sort((Waypoint x, Waypoint y) => {
+            int index = Random.Range(0, 3);
+            return (index == 0) ? -1 : (index == 1) ? 0 : 1;
+        });
+
+        for (int i = 0; i < Mathf.Min(AllWaypoints.Count, 80); i++) {
+            GameObject go = GameObject.Instantiate<GameObject>(MotherGo, AllWaypoints[i].transform.position, Quaternion.identity);
+            go.GetComponent<MotherBehaviour>().CurrentWaypoint = AllWaypoints[i];
         }
     }
 }
