@@ -31,7 +31,6 @@ public class Building : MonoBehaviour, IDestroyable
         foreach (Transform t in destroyed) {
             if (t.gameObject != gameObject) {
                 t.gameObject.SetActive(true);
-                Debug.Log(t.gameObject.name);
             }
         }
 
