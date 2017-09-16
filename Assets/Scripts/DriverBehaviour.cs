@@ -68,7 +68,11 @@ public class DriverBehaviour : MonoBehaviour, IDestroyable
                 if (wp != PreLastWaypoint) {
                     SetCurrentWaypoint(wp);
                 } else {
-                    SetCurrentWaypoint(WaypointHolder.Instance.GetLinkedWaypointOtherRoad(CurrentWaypoint, wp));
+                    Waypoint currentWaypoint = WaypointHolder.Instance.GetLinkedWaypointOtherRoad(CurrentWaypoint, wp);
+                    if (currentWaypoint != null)
+                        SetCurrentWaypoint(currentWaypoint);
+                    else
+                        SetCurrentWaypoint(wp);
                 }
 
                 PreLastWaypoint = LastWaypoint;
