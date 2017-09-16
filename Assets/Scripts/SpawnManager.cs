@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     public bool bIsToRotate = false;
 
     public bool bIsOnGlobalCooldown = false;
-    public float GlobalCooldown = 0.5f;
+    public float GlobalCooldown = 0.3f;
     public Coroutine GlobalCooldownCoroutine;
 
     private Vector3 CurrentSpawnPoint = Vector3.zero;
