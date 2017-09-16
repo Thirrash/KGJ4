@@ -20,9 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4733882569556126}
   - component: {fileID: 195314435422250780}
-  - component: {fileID: 54803359614770346}
-  - component: {fileID: 65451982123540326}
-  - component: {fileID: 114903419394180866}
+  - component: {fileID: 114926695473337894}
+  - component: {fileID: 65757311759454794}
   m_Layer: 9
   m_Name: Driver
   m_TagString: Untagged
@@ -187,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367674301123930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.99, y: 5.36, z: -75.47}
+  m_LocalPosition: {x: -46.83, y: 1.39, z: -99.524994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4825572427262424}
@@ -200,8 +199,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609292274238612}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.15}
+  m_LocalRotation: {x: -0.5000007, y: -0.4999993, z: -0.4999993, w: 0.5000007}
+  m_LocalPosition: {x: -0.99321365, y: 0, z: -0.21499634}
   m_LocalScale: {x: 1.6352, y: 1.6352, z: 1.6352}
   m_Children:
   - {fileID: 4116634551339198}
@@ -211,7 +210,7 @@ Transform:
   - {fileID: 4654474676407450}
   m_Father: {fileID: 4733882569556126}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.00001}
 --- !u!4 &4921323592058318
 Transform:
   m_ObjectHideFlags: 1
@@ -381,22 +380,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558134431913020}
   m_Mesh: {fileID: 4300000, guid: a613c012bdb2e014eb352f33a04f76d5, type: 3}
---- !u!54 &54803359614770346
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367674301123930}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
---- !u!65 &65451982123540326
+--- !u!65 &65757311759454794
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -406,9 +390,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.62, y: 2.31, z: 5.92}
-  m_Center: {x: -0.3, y: -0.3, z: -0.14}
---- !u!114 &114903419394180866
+  m_Size: {x: 6, y: 4.4, z: 12.71}
+  m_Center: {x: 0.18, y: -0.78, z: -0.58}
+--- !u!114 &114926695473337894
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

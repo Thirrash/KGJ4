@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17338704, g: 0.216739, b: 0.2988083, a: 1}
+  m_IndirectSpecularColor: {r: 0.17338665, g: 0.21673845, b: 0.29880765, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -95,15 +95,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 2
-    agentHeight: 2
+    agentRadius: 3
+    agentHeight: 4
     agentSlope: 45
     agentClimb: 0.3
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.6666667
+    cellSize: 1
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1071,7 +1071,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4733882569556126, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 3.19
       objectReference: {fileID: 0}
     - target: {fileID: 4733882569556126, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1097,11 +1097,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114903419394180866, guid: 5041380d15d641449bd95accd0e875ea,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: CurrentWaypoint
       value: 
       objectReference: {fileID: 1591652123}
+    - target: {fileID: 114926695473337894, guid: 5041380d15d641449bd95accd0e875ea,
+        type: 2}
+      propertyPath: CurrentWaypoint
+      value: 
+      objectReference: {fileID: 2006588168}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
   m_IsPrefabParent: 0
@@ -7601,11 +7605,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4733882569556126, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -56.244446
+      value: -46.83
       objectReference: {fileID: 0}
     - target: {fileID: 4733882569556126, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.56
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 4733882569556126, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7631,15 +7635,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1367674301123930, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
-      propertyPath: m_Name
-      value: Driver (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903419394180866, guid: 5041380d15d641449bd95accd0e875ea,
+    - target: {fileID: 114926695473337894, guid: 5041380d15d641449bd95accd0e875ea,
         type: 2}
       propertyPath: CurrentWaypoint
       value: 
       objectReference: {fileID: 213261245}
+    - target: {fileID: 1367674301123930, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
+      propertyPath: m_Name
+      value: Driver (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5041380d15d641449bd95accd0e875ea, type: 2}
   m_IsPrefabParent: 0
