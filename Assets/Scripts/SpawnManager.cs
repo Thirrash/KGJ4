@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     public bool bIsToRotate = false;
 
     public bool bIsOnGlobalCooldown = false;
-    public float GlobalCooldown = 0.5f;
+    public float GlobalCooldown = 0.3f;
     public Coroutine GlobalCooldownCoroutine;
 
     private Vector3 CurrentSpawnPoint = Vector3.zero;
@@ -61,8 +61,8 @@ public class SpawnManager : MonoBehaviour
         WeaponShadows.Add(3, "Shadows/Fresher");
         WeaponShadows.Add(4, "Shadows/Homeless");
 
-        WeaponCooldowns.Add(1, 3.0f);
-        WeaponCooldowns.Add(2, 2.0f);
+        WeaponCooldowns.Add(1, 6.0f);
+        WeaponCooldowns.Add(2, 8.0f);
         WeaponCooldowns.Add(3, 6.0f);
         WeaponCooldowns.Add(4, 5.0f);
 

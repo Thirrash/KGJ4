@@ -18,8 +18,12 @@ public class DriverHandler : MonoBehaviour
         DriverList.Add(db);
     }
 
-    void Start() {
+    private void Awake()
+    {
         Instance = this;
+    }
+
+    void Start() {
         StartCoroutine(SpawnAmericans());
     }
 
