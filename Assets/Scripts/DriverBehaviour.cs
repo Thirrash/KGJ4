@@ -25,10 +25,16 @@ public class DriverBehaviour : MonoBehaviour, IDestroyable
     void Start() {
         MoveCoroutine = StartCoroutine(Move());
         StartCoroutine(CheckForHomeless());
+
+        DriverHandler.Instance.AddDriver(this);
     }
 
     void Update() {
 
+    }
+
+    private void OnDestroy() {
+        StopAllCoroutines();
     }
 
     private Waypoint GetCurrentWaypoint() {

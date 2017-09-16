@@ -141,10 +141,13 @@ public class SpawnManager : MonoBehaviour
     private Vector3 GetSpawnPosition() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (!Physics.Raycast(ray, out hit, 150.0f, 1 << Statics.FloorLayer | 1 << Statics.BuildingLayer))
+        if (!Physics.Raycast(ray, out hit, 150.0f, 1 << Statics.FloorLayer | 1 << Statics.BuildingLayer | 1 << Statics.AmericanLayer))
             return Vector3.zero;
 
         if (hit.collider.gameObject.layer == Statics.BuildingLayer && CurrentWeapon != 1 && CurrentWeapon != 2)
+            return Vector3.zero;
+
+        if (hit.collider.gameObject.layer == Statics.AmericanLayer)
             return Vector3.zero;
 
         return hit.point;
