@@ -35,9 +35,9 @@ public class Bomb : MonoBehaviour
 
             RaycastHit hit;
             if (Physics.Raycast(new Vector3(x, 100.0f, z), new Vector3(0.0f, -150.0f, 0.0f), out hit, 150.0f, 1 << Statics.BuildingLayer))
-                y = hit.point.y + 0.3f;
+                y = hit.point.y + 0.6f;
             else
-                y = 0.3f;
+                y = 0.6f;
 
             LineR.SetPosition(i, new Vector3(x, y, z));
             currAngle += incrValue;
@@ -58,10 +58,14 @@ public class Bomb : MonoBehaviour
     private IEnumerator FallDown() {
         transform.position = new Vector3(transform.position.x, InitialYPos, transform.position.z);
 
-        float positionDecrement = InitialYPos / TimeToExplosion;
+        RaycastHit hit;
+        Physics.Raycast(transform.position, new Vector3(0.0f, -250.0f, 0.0f), out hit, 250.0f, 1 << Statics.BuildingLayer);
+
+        float positionDecrement = (InitialYPos - ((hit.collider != null) ? hit.point.y : 0.6f))  / TimeToExplosion;
         float timer = 0.0f;
         while (timer < TimeToExplosion) {
             transform.position -= new Vector3(0.0f, positionDecrement * Time.deltaTime, 0.0f);
+            timer += Time.deltaTime;
             yield return null;
         }
     }
