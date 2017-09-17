@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406670645673144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -21.819601, y: 1.7124994, z: 45.405533}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,8 +59,6 @@ MeshRenderer:
   - {fileID: 2100000, guid: ca0401ce0e38b77439430d54ddcd96da, type: 2}
   - {fileID: 2100000, guid: ce04c103e97ab2b46867fa606a5dca82, type: 2}
   - {fileID: 2100000, guid: 8b11255c8d8049e4f850041bc4f98716, type: 2}
-  - {fileID: 2100000, guid: ce04c103e97ab2b46867fa606a5dca82, type: 2}
-  - {fileID: 2100000, guid: ce04c103e97ab2b46867fa606a5dca82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,5 +108,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}

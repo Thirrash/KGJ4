@@ -8,7 +8,7 @@ public class TimerManager : MonoBehaviour {
     public Text ResultText;
 
     private Text TimerText;
-    private float timeLeft = 15.0f;
+    private float timeLeft = 185.0f;
     private bool bIsFinished = false;
 
     public float minScore = 4.76f;
@@ -18,6 +18,7 @@ public class TimerManager : MonoBehaviour {
         ResultText.text = "";
         TimerText = GetComponent<Text>();
         StartCoroutine(UpdateText());
+        StartCoroutine(UpdateObjective());
     }
 
     private void Update()
@@ -53,6 +54,14 @@ public class TimerManager : MonoBehaviour {
             TimerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    private IEnumerator UpdateObjective()
+    {
+        ResultText.text = "Destroy Lootz City\nScore at least 4,76 PLN";
+        yield return new WaitForSeconds(5.0f);
+        ResultText.text = "";
+
     }
 
     private void Win() { ResultText.text = "!You win!\n\nPress Escape to return to Menu"; }
